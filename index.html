@@ -24,6 +24,13 @@
         },
       };
     </script>
+    <style type="text/tailwindcss">
+      @layer components {
+        .button {
+          @apply bg-slate-200 py-2 font-medium rounded-md text-left pl-5 duration-300  text-lg capitalize border border-transparent;
+        }
+      }
+    </style>
     <!-- Font awesome cdn link -->
     <link
       rel="stylesheet"
@@ -40,44 +47,29 @@
       <div class="w-full max-w-3xl py-8 px-5 rounded-md shadow-lg bg-white">
         <div class="flex items-center justify-between">
           <p class="text-lg font-medium">
-            <span>2</span>
-            of <span>3</span>
+            <span id="current-question">2</span>
+            of <span id="total-question">3</span>
             Question
           </p>
           <div
             class="flex items-center gap-4 bg-blue-200 px-5 py-2 rounded-full"
           >
             <i class="fa-solid fa-clock text-lg text-blue-600"></i>
-            <span class="text-lg font-semibold">8s</span>
+            <span id="time" class="text-lg font-semibold">8s</span>
           </div>
         </div>
         <div class="divider"></div>
         <h1 id="question" class="text-2xl font-semibold">
-          Which is the only continent in the world without a desert?
+          <!-- Which is the only continent in the world without a desert? -->
         </h1>
-        <div id="btn-container" class="flex flex-col gap-3 mt-5">
-          <button
-            class="bg-slate-200 py-2 font-medium rounded-md text-left pl-5 duration-300 hover:bg-slate-300 text-lg"
-          >
-            North America
-          </button>
-          <button
-            class="bg-slate-200 py-2 font-medium rounded-md text-left pl-5 duration-300 hover:bg-slate-300 text-lg"
-          >
-            Asia
-          </button>
-          <button
-            class="bg-slate-200 py-2 font-medium rounded-md text-left pl-5 duration-300 hover:bg-slate-300 text-lg"
-          >
-            Asia
-          </button>
-          <button
-            class="bg-slate-200 py-2 font-medium rounded-md text-left pl-5 duration-300 hover:bg-slate-300 text-lg"
-          >
-            Asia
-          </button>
+        <div id="btn-container" class="flex flex-col gap-3 mt-6">
+          <!-- <button class="button">North America</button> -->
+          <!-- <button class="button">Asia</button>
+          <button class="button">Asia</button>
+          <button class="button">Asia</button> -->
         </div>
-        <button id="next-question"
+        <button
+          id="next-question"
           class="bg-emerald-400 text-white px-6 py-2 rounded mt-5 block duration-300 hover:bg-emerald-600 ml-auto"
         >
           Next
