@@ -65,16 +65,16 @@
             Question
           </p>
           <div
-            class="flex items-center gap-4 bg-blue-200 px-5 py-2 rounded-full"
+            class="flex items-center gap-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-5 py-2 rounded-full"
           >
-            <i class="fa-solid fa-clock text-lg text-blue-600"></i>
-            <span id="time" class="text-lg font-semibold">8s</span>
+            <i class="fa-solid fa-clock text-lg text-white"></i>
+            <p class="text-lg font-semibold text-white">
+              <span id="time">0</span>s
+            </p>
           </div>
         </div>
         <div class="divider"></div>
-        <h1 id="question" class="text-2xl font-semibold">
-          <!-- Which is the only continent in the world without a desert? -->
-        </h1>
+        <h1 id="question" class="text-2xl font-semibold"></h1>
         <div id="btn-container" class="flex flex-col gap-3 mt-6"></div>
         <div class="flex items-center justify-end">
           <button id="next-question" class="next-btn mt-4 hidden">Next</button>
@@ -88,7 +88,7 @@
             Your score is <span id="score">1</span> out of
             <span id="total">3</span>
           </h2>
-          <button id="restart-btn" class="btn-grad self-center shadow-md">
+          <button id="restart-btn" class="btn-grad self-center shadow-md font-semibold">
             Restart
           </button>
         </div>

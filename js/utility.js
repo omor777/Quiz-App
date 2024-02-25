@@ -12,3 +12,11 @@ function showElementById(id) {
 function hideElementById(id) {
   document.getElementById(id).classList.add("hidden");
 }
+
+// function setAttributeByClassName(cls) {
+//     console.log(cls);
+//  let elm = document.querySelector(cls)
+//  elm.setAttribute('disabled',true)
+ 
+//  console.log(elm);
+// }

@@ -72,6 +72,8 @@ window.onload = () => {
 let questionCount = 1;
 let questionNo = 0;
 let rightAnswer = 0;
+let timeCount = 15;
+let intervalId;
 function main() {
   const id = (id) => document.getElementById(id);
   const btnContainer = id("btn-container");
@@ -86,6 +88,8 @@ function main() {
   function startTheQuiz() {
     hideElementById("start-quiz");
     showElementById("quiz");
+    loadQuestion(questionNo);
+    timeCountDownQuiz();
   }
   startQuiz.addEventListener("click", startTheQuiz);
 
@@ -105,11 +109,60 @@ function main() {
     });
   }
 
+  function timeCountDownQuiz() {
+    setInnerText("time", timeCount);
+
+    const buttons = btnContainer.querySelectorAll("button");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        clearInterval(intervalId);
+      });
+    });
+
+    intervalId = setInterval(() => {
+      if (timeCount === 0) {
+        clearTimeout(intervalId);
+        return;
+      }
+      timeCount--;
+      setInnerText("time", timeCount);
+    }, 1000);
+  }
+
+  function showAnswerByTimeEnd() {
+    const buttons = btnContainer.querySelectorAll("button");
+    if (timeCount === 0) {
+      buttons.forEach((btn) => {
+        const correct = btn.dataset.name;
+        if (correct === "true") {
+          btn.classList.add("bg-emerald-100", "border", "border-emerald-400");
+
+          showElementById("next-question");
+          updateNextButtonText();
+
+          btn.setAttribute("disabled", true);
+          btn.classList.add("cursor-no-drop");
+        } else {
+          btn.setAttribute("disabled", true);
+          btn.classList.add("cursor-no-drop");
+        }
+      });
+    }
+  }
+
   function loadQuestion(questionNo) {
     questionText.innerText = questions[questionNo].question;
     createQuestion(questions[questionNo].answers);
+    // show answer automatically when time is end
+    const intervalId = setInterval(() => {
+      showAnswerByTimeEnd();
+      if (timeCount === 0) {
+        clearInterval(intervalId);
+        return;
+      }
+    }, 1000);
   }
-  loadQuestion(questionNo);
 
   function updateNextButtonText() {
     questionCount === questions.length
@@ -119,20 +172,20 @@ function main() {
 
   btnContainer.addEventListener("click", function (e) {
     if (e.target.id === "btn-container") return;
+
+    if (e.target) {
+      clearInterval(intervalId);
+    }
     //handle right answer
     const correct = e.target.dataset.name;
     if (correct === "true") {
       rightAnswer++;
       e.target.classList.add("bg-emerald-100", "border", "border-emerald-400");
 
-      //disabled all button
       const buttons = btnContainer.querySelectorAll("button");
       buttons.forEach((btn) => {
-        //show next button
         showElementById("next-question");
-
         updateNextButtonText();
-
         btn.setAttribute("disabled", true);
         btn.classList.add("cursor-no-drop");
       });
@@ -157,12 +210,12 @@ function main() {
   });
 
   function updateNextQuestion() {
-    hideElementById("next-question");
-    //remove existing child from button container
-    removeElement(btnContainer);
-
+    timeCount = 15;
     questionCount++;
     questionNo++;
+    hideElementById("next-question");
+    removeElement(btnContainer);
+    timeCountDownQuiz();
     if (questionCount > questions.length) {
       hideElementById("quiz");
       showElementById("score-page");
@@ -188,4 +241,3 @@ function main() {
     }
   }
 }
-
