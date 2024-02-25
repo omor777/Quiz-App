@@ -21,43 +21,43 @@ const questions = [
     ],
   },
   {
-    question: "Which is the only continent in the world without a desert?",
+    question: "Which is the most widely spoken language in the world?",
     answers: [
       {
-        answer: "north america",
+        answer: "spanish",
         correct: false,
       },
       {
-        answer: "uganda",
-        correct: false,
-      },
-      {
-        answer: "europe",
+        answer: "mandarin",
         correct: true,
       },
       {
-        answer: "africa",
+        answer: "english",
+        correct: false,
+      },
+      {
+        answer: "german",
         correct: false,
       },
     ],
   },
   {
-    question: "Which is the only continent in the world without a desert?",
+    question: "Who Invented Computer?",
     answers: [
       {
-        answer: "north america",
-        correct: false,
-      },
-      {
-        answer: "asia",
-        correct: false,
-      },
-      {
-        answer: "europe",
+        answer: "Charles Babbage",
         correct: true,
       },
       {
-        answer: "africa",
+        answer: "Charles luce",
+        correct: false,
+      },
+      {
+        answer: "Henry Luce",
+        correct: false,
+      },
+      {
+        answer: "henry luce",
         correct: false,
       },
     ],
@@ -68,6 +68,10 @@ window.onload = () => {
   main();
 };
 
+//global
+let questionCount = 1;
+let questionNo = 0;
+let rightAnswer = 0;
 function main() {
   const id = (id) => document.getElementById(id);
   const btnContainer = id("btn-container");
@@ -76,6 +80,20 @@ function main() {
   const time = id("time");
   const totalQuestion = id("total-question");
   const currentQuestion = id("current-question");
+  const restartBtn = id("restart-btn");
+  const startQuiz = id("start-btn");
+
+  function startTheQuiz() {
+    hideElementById("start-quiz");
+    showElementById("quiz");
+  }
+  startQuiz.addEventListener("click", startTheQuiz);
+
+  //update question no
+  setInnerText("question-no", questionCount);
+
+  //update total question
+  setInnerText("total-question", questions.length);
 
   function createQuestion(answers) {
     answers.forEach((qes) => {
@@ -87,22 +105,34 @@ function main() {
     });
   }
 
-  function loadQuestion() {
-    questionText.innerText = questions[0].question;
-    createQuestion(questions[0].answers);
+  function loadQuestion(questionNo) {
+    questionText.innerText = questions[questionNo].question;
+    createQuestion(questions[questionNo].answers);
   }
-  loadQuestion();
+  loadQuestion(questionNo);
 
-  //
+  function updateNextButtonText() {
+    questionCount === questions.length
+      ? setInnerText("next-question", "Finish")
+      : setInnerText("next-question", "Next");
+  }
+
   btnContainer.addEventListener("click", function (e) {
     if (e.target.id === "btn-container") return;
+    //handle right answer
     const correct = e.target.dataset.name;
     if (correct === "true") {
+      rightAnswer++;
       e.target.classList.add("bg-emerald-100", "border", "border-emerald-400");
 
       //disabled all button
       const buttons = btnContainer.querySelectorAll("button");
       buttons.forEach((btn) => {
+        //show next button
+        showElementById("next-question");
+
+        updateNextButtonText();
+
         btn.setAttribute("disabled", true);
         btn.classList.add("cursor-no-drop");
       });
@@ -114,6 +144,10 @@ function main() {
       buttons.forEach((btn) => {
         const correct = btn.dataset.name;
         if (correct === "true") {
+          //show next button
+          showElementById("next-question");
+
+          updateNextButtonText();
           btn.classList.add("bg-emerald-100", "border", "border-emerald-400");
         }
         btn.setAttribute("disabled", true);
@@ -121,4 +155,37 @@ function main() {
       });
     }
   });
+
+  function updateNextQuestion() {
+    hideElementById("next-question");
+    //remove existing child from button container
+    removeElement(btnContainer);
+
+    questionCount++;
+    questionNo++;
+    if (questionCount > questions.length) {
+      hideElementById("quiz");
+      showElementById("score-page");
+      setInnerText("score", rightAnswer);
+      setInnerText("total", questions.length);
+      return;
+    } else {
+      loadQuestion(questionNo);
+      setInnerText("question-no", questionCount);
+    }
+  }
+  // handle nextQuestion button
+  nextQuestion.addEventListener("click", updateNextQuestion);
+
+  restartBtn.addEventListener("click", function () {
+    window.location.reload();
+  });
+
+  //remove childe
+  function removeElement(parent) {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+  }
 }
+

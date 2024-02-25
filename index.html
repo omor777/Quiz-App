@@ -27,7 +27,7 @@
     <style type="text/tailwindcss">
       @layer components {
         .button {
-          @apply bg-slate-200 py-2 font-medium rounded-md text-left pl-5 duration-300  text-lg capitalize border border-transparent;
+          @apply bg-slate-200 py-3 font-medium rounded-md text-left pl-5 duration-300  text-lg capitalize border border-transparent;
         }
       }
     </style>
@@ -42,12 +42,25 @@
   </head>
   <body class="bg-slate-400">
     <section
-      class="container mx-auto h-screen flex items-center justify-center"
+      class="container mx-auto h-screen flex items-center justify-center flex-col"
     >
-      <div class="w-full max-w-3xl py-8 px-5 rounded-md shadow-lg bg-white">
+      <div id="start-quiz" class="">
+        <div>
+          <h2 class="text-5xl font-bold tracking-[4px] text-white">
+            Start-Quiz
+          </h2>
+        </div>
+        <div class="flex items-center justify-center mt-5">
+          <button id="start-btn" class="start-btn shadow-md">Start</button>
+        </div>
+      </div>
+      <div
+        id="quiz"
+        class="w-full max-w-3xl py-8 px-5 rounded-md shadow-lg bg-white hidden"
+      >
         <div class="flex items-center justify-between">
           <p class="text-lg font-medium">
-            <span id="current-question">2</span>
+            <span id="question-no">0</span>
             of <span id="total-question">3</span>
             Question
           </p>
@@ -62,20 +75,27 @@
         <h1 id="question" class="text-2xl font-semibold">
           <!-- Which is the only continent in the world without a desert? -->
         </h1>
-        <div id="btn-container" class="flex flex-col gap-3 mt-6">
-          <!-- <button class="button">North America</button> -->
-          <!-- <button class="button">Asia</button>
-          <button class="button">Asia</button>
-          <button class="button">Asia</button> -->
+        <div id="btn-container" class="flex flex-col gap-3 mt-6"></div>
+        <div class="flex items-center justify-end">
+          <button id="next-question" class="next-btn mt-4 hidden">Next</button>
         </div>
-        <button
-          id="next-question"
-          class="bg-emerald-400 text-white px-6 py-2 rounded mt-5 block duration-300 hover:bg-emerald-600 ml-auto"
-        >
-          Next
-        </button>
+      </div>
+
+      <!-- scores -->
+      <div id="score-page" class="hidden">
+        <div class="flex flex-col">
+          <h2 class="text-3xl text-white font-medium">
+            Your score is <span id="score">1</span> out of
+            <span id="total">3</span>
+          </h2>
+          <button id="restart-btn" class="btn-grad self-center shadow-md">
+            Restart
+          </button>
+        </div>
       </div>
     </section>
+
+    <script src="./js/utility.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>
