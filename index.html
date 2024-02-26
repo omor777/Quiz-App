@@ -27,7 +27,7 @@
     <style type="text/tailwindcss">
       @layer components {
         .button {
-          @apply bg-slate-200 py-3 font-medium rounded-md text-left pl-5 duration-300  text-lg capitalize border border-transparent;
+          @apply bg-slate-200 py-3  rounded-md text-left pl-5 duration-300  text-lg capitalize border border-transparent italic;
         }
       }
     </style>
@@ -46,12 +46,12 @@
     >
       <div id="start-quiz" class="">
         <div>
-          <h2 class="text-5xl font-bold tracking-[4px] text-white">
+          <h2 class="text-5xl font-bold tracking-[4px] text-white italic">
             Start-Quiz
           </h2>
         </div>
         <div class="flex items-center justify-center mt-5">
-          <button id="start-btn" class="start-btn shadow-md">Start</button>
+          <button id="start-btn" class="start-btn shadow-md italic">Start</button>
         </div>
       </div>
       <div
@@ -59,7 +59,7 @@
         class="w-full max-w-3xl py-8 px-5 rounded-md shadow-lg bg-white hidden"
       >
         <div class="flex items-center justify-between">
-          <p class="text-lg font-medium">
+          <p class="text-xl font-medium">
             <span id="question-no">0</span>
             of <span id="total-question">3</span>
             Question
@@ -77,18 +77,18 @@
         <h1 id="question" class="text-2xl font-semibold"></h1>
         <div id="btn-container" class="flex flex-col gap-3 mt-6"></div>
         <div class="flex items-center justify-end">
-          <button id="next-question" class="next-btn mt-4 hidden">Next</button>
+          <button id="next-question" class="next-btn mt-4 hidden italic">Next</button>
         </div>
       </div>
 
       <!-- scores -->
       <div id="score-page" class="hidden">
         <div class="flex flex-col">
-          <h2 class="text-3xl text-white font-medium">
+          <h2 class="text-3xl text-white font-medium italic">
             Your score is <span id="score">1</span> out of
             <span id="total">3</span>
           </h2>
-          <button id="restart-btn" class="btn-grad self-center shadow-md font-semibold">
+          <button id="restart-btn" class="btn-grad self-center shadow-md font-semibold italic">
             Restart
           </button>
         </div>

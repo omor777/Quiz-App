@@ -70,7 +70,7 @@ window.onload = () => {
 
 //global
 let questionCount = 1;
-let questionNo = 0;
+let questionNoCount = 0;
 let rightAnswer = 0;
 let timeCount = 15;
 let intervalId;
@@ -88,18 +88,14 @@ function main() {
   function startTheQuiz() {
     hideElementById("start-quiz");
     showElementById("quiz");
-    loadQuestion(questionNo);
-    timeCountDownQuiz();
+    loadQuestion(questionNoCount);
+    quizTimeCount();
+    setInnerText("question-no", questionCount);
+    setInnerText("total-question", questions.length);
   }
   startQuiz.addEventListener("click", startTheQuiz);
 
-  //update question no
-  setInnerText("question-no", questionCount);
-
-  //update total question
-  setInnerText("total-question", questions.length);
-
-  function createQuestion(answers) {
+  function createAnswerBtn(answers) {
     answers.forEach((qes) => {
       const btn = document.createElement("button");
       btn.innerText = qes.answer;
@@ -109,17 +105,8 @@ function main() {
     });
   }
 
-  function timeCountDownQuiz() {
+  function quizTimeCount() {
     setInnerText("time", timeCount);
-
-    const buttons = btnContainer.querySelectorAll("button");
-
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", function () {
-        clearInterval(intervalId);
-      });
-    });
-
     intervalId = setInterval(() => {
       if (timeCount === 0) {
         clearTimeout(intervalId);
@@ -151,9 +138,9 @@ function main() {
     }
   }
 
-  function loadQuestion(questionNo) {
-    questionText.innerText = questions[questionNo].question;
-    createQuestion(questions[questionNo].answers);
+  function loadQuestion(questionNoCount) {
+    questionText.innerText = questions[questionNoCount].question;
+    createAnswerBtn(questions[questionNoCount].answers);
     // show answer automatically when time is end
     const intervalId = setInterval(() => {
       showAnswerByTimeEnd();
@@ -172,7 +159,7 @@ function main() {
 
   btnContainer.addEventListener("click", function (e) {
     if (e.target.id === "btn-container") return;
-
+    // if click the answer button stop the time
     if (e.target) {
       clearInterval(intervalId);
     }
@@ -181,7 +168,6 @@ function main() {
     if (correct === "true") {
       rightAnswer++;
       e.target.classList.add("bg-emerald-100", "border", "border-emerald-400");
-
       const buttons = btnContainer.querySelectorAll("button");
       buttons.forEach((btn) => {
         showElementById("next-question");
@@ -191,7 +177,6 @@ function main() {
       });
     } else {
       e.target.classList.add("bg-red-100", "border", "border-red-400");
-
       //disabled all button
       const buttons = btnContainer.querySelectorAll("button");
       buttons.forEach((btn) => {
@@ -199,7 +184,6 @@ function main() {
         if (correct === "true") {
           //show next button
           showElementById("next-question");
-
           updateNextButtonText();
           btn.classList.add("bg-emerald-100", "border", "border-emerald-400");
         }
@@ -212,10 +196,10 @@ function main() {
   function updateNextQuestion() {
     timeCount = 15;
     questionCount++;
-    questionNo++;
+    questionNoCount++;
     hideElementById("next-question");
     removeElement(btnContainer);
-    timeCountDownQuiz();
+    quizTimeCount();
     if (questionCount > questions.length) {
       hideElementById("quiz");
       showElementById("score-page");
@@ -223,7 +207,7 @@ function main() {
       setInnerText("total", questions.length);
       return;
     } else {
-      loadQuestion(questionNo);
+      loadQuestion(questionNoCount);
       setInnerText("question-no", questionCount);
     }
   }
