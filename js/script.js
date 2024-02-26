@@ -62,6 +62,266 @@ const questions = [
       },
     ],
   },
+
+  {
+    question: "What is the capital of Canada?",
+    answers: [
+      {
+        answer: "Vancouver",
+        correct: false,
+      },
+      {
+        answer: "Ottawa",
+        correct: true,
+      },
+      {
+        answer: "Edmonton",
+        correct: false,
+      },
+      {
+        answer: "Toronto",
+        correct: false,
+      },
+    ],
+  },
+
+  {
+    question: "Who Invented Computer?",
+    answers: [
+      {
+        answer: "Charles Babbage",
+        correct: true,
+      },
+      {
+        answer: "Charles luce",
+        correct: false,
+      },
+      {
+        answer: "Henry Luce",
+        correct: false,
+      },
+      {
+        answer: "henry luce",
+        correct: false,
+      },
+    ],
+  },
+
+  {
+    question: "What is the longest river in the world",
+    answers: [
+      {
+        answer: "Amazon River",
+        correct: false,
+      },
+      {
+        answer: "Yenisei River",
+        correct: false,
+      },
+      {
+        answer: "Yellow River",
+        correct: false,
+      },
+      {
+        answer: "The Nile",
+        correct: true,
+      },
+    ],
+  },
+
+  {
+    question: "Which desert is the largest in the world?",
+    answers: [
+      {
+        answer: "The Sahara Desert",
+        correct: true,
+      },
+      {
+        answer: "Kalahari Desert",
+        correct: false,
+      },
+      {
+        answer: "Gobi Desert",
+        correct: false,
+      },
+      {
+        answer: "Arabian Desert",
+        correct: false,
+      },
+    ],
+  },
+
+  {
+    question: "What country has the most natural lakes?",
+    answers: [
+      {
+        answer: "Finland",
+        correct: false,
+      },
+      {
+        answer: "Russia",
+        correct: false,
+      },
+      {
+        answer: "Canada",
+        correct: true,
+      },
+      {
+        answer: "United States",
+        correct: false,
+      },
+    ],
+  },
+
+  {
+    question: "In which continent is the Amazon Rainforest located?",
+    answers: [
+      {
+        answer: "Australia",
+        correct: false,
+      },
+      {
+        answer: "Indonesia",
+        correct: false,
+      },
+      {
+        answer: "Norway",
+        correct: false,
+      },
+      {
+        answer: "South America",
+        correct: true,
+      },
+    ],
+  },
+
+  {
+    question: "Mount Everest is located in which mountain range?",
+    answers: [
+      {
+        answer: "Atlas Mountains",
+        correct: false,
+      },
+      {
+        answer: "Rocky Mountains",
+        correct: false,
+      },
+      {
+        answer: "The Himalayas",
+        correct: true,
+      },
+      {
+        answer: "Andes Mountains",
+        correct: false,
+      },
+    ],
+  },
+  {
+    question: "What is the capital city of Australia?",
+    answers: [
+      {
+        answer: "Melbourne",
+        correct: false,
+      },
+      {
+        answer: "Newcastle",
+        correct: false,
+      },
+      {
+        answer: "Sydney",
+        correct: false,
+      },
+      {
+        answer: "Canberra",
+        correct: true,
+      },
+    ],
+  },
+  {
+    question: "Which country is known as the Land of the Rising Sun?",
+    answers: [
+      {
+        answer: "China",
+        correct: false,
+      },
+      {
+        answer: "Indonesia",
+        correct: false,
+      },
+      {
+        answer: "Japan",
+        correct: true,
+      },
+      {
+        answer: "Canada",
+        correct: false,
+      },
+    ],
+  },
+  {
+    question:
+      "The Great Barrier Reef is off the coast of which Australian state?",
+    answers: [
+      {
+        answer: "Queensland",
+        correct: true,
+      },
+      {
+        answer: "Queensland",
+        correct: false,
+      },
+      {
+        answer: "Victoria",
+        correct: false,
+      },
+      {
+        answer: "New South Wales",
+        correct: false,
+      },
+    ],
+  },
+  {
+    question: "What is the longest river in the USA?",
+    answers: [
+      {
+        answer: "Mississippi River",
+        correct: true,
+      },
+      {
+        answer: "Colorado River",
+        correct: false,
+      },
+      {
+        answer: "Rio Grande",
+        correct: false,
+      },
+      {
+        answer: "Snake River",
+        correct: false,
+      },
+    ],
+  },
+  {
+    question: "What is the capital of Italy?",
+    answers: [
+      {
+        answer: "Florence",
+        correct: false,
+      },
+      {
+        answer: "Rome",
+        correct: true,
+      },
+      {
+        answer: "Venice",
+        correct: false,
+      },
+      {
+        answer: "Milan",
+        correct: false,
+      },
+    ],
+  },
 ];
 
 window.onload = () => {
