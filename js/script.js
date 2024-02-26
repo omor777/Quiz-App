@@ -86,22 +86,22 @@ const questions = [
   },
 
   {
-    question: "Who Invented Computer?",
+    question: "What is the capital of New Zealand?",
     answers: [
       {
-        answer: "Charles Babbage",
+        answer: "Hamilton",
+        correct: false,
+      },
+      {
+        answer: "Christchurch",
+        correct: false,
+      },
+      {
+        answer: "Wellington",
         correct: true,
       },
       {
-        answer: "Charles luce",
-        correct: false,
-      },
-      {
-        answer: "Henry Luce",
-        correct: false,
-      },
-      {
-        answer: "henry luce",
+        answer: "Auckland",
         correct: false,
       },
     ],
@@ -267,7 +267,7 @@ const questions = [
         correct: true,
       },
       {
-        answer: "Queensland",
+        answer: "Hamilton",
         correct: false,
       },
       {
